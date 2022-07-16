@@ -1,78 +1,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="addscript.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 
 <body>
   <input type="text" id="searchbox" />
   <button type="button" onClick="fnClick()">Search</button>
   <div id="country"></div>
-  <script>
-    const options = {
-      method: 'GET',
-      headers: {
-        'X-RapidAPI-Key': 'b539818898msh98c832c878335dcp11b2edjsnf3d5057391a5',
-        'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
-      }
-    };
 
-    function fnClick(event) {
-      let searchBoxInput = document.getElementById("searchbox").value;
-      console.log(searchBoxInput);
-      var url = "https://wft-geo-db.p.rapidapi.com/v1/geo/countries/" + searchBoxInput;
-      fetch(url, options)
-        .then((response) => response.json())
-        .then(function(info) {
-
-          console.log(info);
-          console.log(info.data.name);
-          console.log(info.data.code);
-          console.log(info.data.capital);
-          console.log(info.data.currencyCodes);
-
-          var a = createNode("h5");
-          var b = createNode("h5");
-          var c = createNode("h5");
-          var d = createNode("h5");
-          var e = createNode("img");
-
-          a.innerHTML = info.data.name;
-          b.innerHTML = info.data.code;
-          c.innerHTML = info.data.capital;
-          d.innerHTML = info.data.currencyCodes;
-          e.src = info.data.flagImageUri
-          e.style.height = 'auto';
-          e.style.width = '200px';
-          append(countryContainer, a);
-          append(countryContainer, b);
-          append(countryContainer, c);
-          append(countryContainer, d);
-          append(countryContainer, e);
-
-
-        })
-        .catch(function(error) {
-          console.log(error)
-
-        });
-    }
-
-    var button = document.getElementById('Search');
-    if (button) {
-      button.addEventListener('click', fnClick, false);
-    }
-
-    function createNode(element) {
-      return document.createElement(element);
-
-    }
-
-    function append(parent, el) {
-      return parent.appendChild(el);
-    }
-
-    const countryContainer = document.getElementById("country");
-  </script>
 
   <body></body>
 </body>
