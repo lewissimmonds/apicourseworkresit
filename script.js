@@ -9,31 +9,51 @@ const options = {
 // Function that is activated upon clicking search
 function searchClick(event) {
 
+
+
   let searchBoxInput = document.getElementById("searchbox").value; // Set a variable equal what's in the search box
   searchBoxInput = searchBoxInput.toLowerCase(); // Set string to lower case
 
   if (searchBoxInput == "") {
 
-    alert("Please enter a country to search for");
+    error.innerHTML = "Please enter a country";
 
   } else {
 
+    error.innerHTML = " ";
+
     console.log(searchBoxInput);
 
-    for (let i = 0; i < countries.length; i++) { // For loop to iterate through the country array
-      if (countries[i].name == searchBoxInput) { // If the name at the current index is equal to what was in the search box
-        var foundCountryCode = countries[i].code // Set a variable to equal the country code at the key of country name
+    var success = false;
+    var i = 0;
+
+    try {
+      while (success == false) { // For loop to iterate through the country array
+        if (countries[i].name == searchBoxInput) { // If the name at the current index is equal to what was in the search box
+          var foundCountryCode = countries[i].code // Set a variable to equal the country code at the key of country name
+
+          retrieveInfo(foundCountryCode)
+          error.innerHTML = " ";
+          break;
+
+        } else {
+
+          error.innerHTML = "Please enter a valid country"
+          success = false;
+          i++;
+
+        }
+
       }
+    } catch (err){
 
     }
-
-    retrieveInfo(foundCountryCode)
-
   }
+
 }
 
-function randomCountryClick(event) {
 
+function randomCountryClick(event) {
 
   ggg = Math.floor(Math.random() * 197) + 1;
 
@@ -41,15 +61,23 @@ function randomCountryClick(event) {
 
   retrieveInfo(foundCountryCode)
 
+  error.innerHTML = " ";
+
 }
 
+
+
 function retrieveInfo(foundCountryCode) {
+
+  countryContainer.innerHTML = " ";
+
 
   var url = "https://countries-cities.p.rapidapi.com/location/country/" + foundCountryCode; // Set a variable equal to the url plus whatever the country
   // code found was
   fetch(url, options) // Fetch the data from the url
     .then((response) => response.json()) // Send the response into a JSON
     .then(function(info) {
+      console.log(info.languages);
 
       // Create the elements for the information to be displayed on
       var name = createNode("h5");
@@ -57,7 +85,6 @@ function retrieveInfo(foundCountryCode) {
       var capital = createNode("h5");
       var continent = createNode("h5");
       var currency = createNode("h5");
-      var population = createNode("h5");
       var population = createNode("h5");
       var languages = createNode("h5");
       var timezone = createNode("h5");
@@ -86,7 +113,6 @@ function retrieveInfo(foundCountryCode) {
       var languagesObject = info.languages;
       var languagesString = "";
 
-      // Code I found but don't quite understand, but it does the job
       for (let i in languagesObject) {
         languagesString += i + ":" + languagesObject[i] + ", ";
       }
@@ -100,9 +126,13 @@ function retrieveInfo(foundCountryCode) {
 
       var fullSentence; // Establish variable for the eventual full sentence of languages
 
-      if (splitString1.length == 4) { // Conditionals depending on how many languages there were in the array
+      if (splitString1.length == 2) { // Conditionals depending on how many languages there were in the array
 
-        fullSentence = splitString1[1] + ', ' + splitString1[3]; // Assemble the full sentence
+        fullSentence = splitString1[1]; // Assemble the full sentence
+
+      } else if (splitString1.length == 4) {
+
+        fullSentence = splitString1[1] + ', ' + splitString1[3];
 
       } else if (splitString1.length == 6) {
 
