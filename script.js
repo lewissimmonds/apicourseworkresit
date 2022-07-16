@@ -10,6 +10,16 @@ const options = {
     let searchBoxInput = document.getElementById("searchbox").value;
     console.log(searchBoxInput);
 
+    for (let i = 0; i < countries.length; i++){
+
+      if (countries[i].name == searchBoxInput){
+
+        foundCountryCode = countries[i].code
+
+      }
+
+    }
+
     var url = "https://countries-cities.p.rapidapi.com/location/country/" + foundCountryCode;
     fetch(url, options)
       .then((response) => response.json())
