@@ -1,3 +1,4 @@
+// Array of country objects since this appeared to tbe the easiest way to do it
 const countries =
 [
 {"name": "afghanistan", "code": "AF"},
@@ -92,7 +93,7 @@ const countries =
 {"name": "kenya", "code": "KE"},
 {"name": "kiribati", "code": "KI"},
 {"name": "north korea", "code": "KP"},
-{"name": "south korea": "KR"},
+{"name": "south korea", "code": "KR"},
 {"name": "kuwait", "code": "KW"},
 {"name": "kyrgyzstan", "code": "KG"},
 {"name": "laos", "code": "LA"},
