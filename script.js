@@ -10,6 +10,7 @@ const options = {
     let searchBoxInput = document.getElementById("searchbox").value;
     console.log(searchBoxInput);
 
+
     for (let i = 0; i < countries.length; i++){
 
       if (countries[i].name == searchBoxInput){
@@ -19,6 +20,13 @@ const options = {
       }
 
     }
+
+
+/*
+    ggg = Math.floor(Math.random() * 197) + 1;
+
+    foundCountryCode = countries[ggg].code;
+    */
 
     var url = "https://countries-cities.p.rapidapi.com/location/country/" + foundCountryCode;
     fetch(url, options)
@@ -58,6 +66,7 @@ const options = {
         continent.innerHTML = "Continent: " + info.continent.name;
         capital.innerHTML = "Capital: " + info.capital.name;
         currency.innerHTML = "Currency: " + info.currency.name + ' (' + info.currency.code + ')';
+        gdgr
         population.innerHTML = "Population: " + info.population;
 
         var languagesObject = info.languages;
