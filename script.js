@@ -45,7 +45,7 @@ function searchClick(event) {
         }
 
       }
-    } catch (err){
+    } catch (err) {
 
     }
   }
@@ -55,7 +55,9 @@ function searchClick(event) {
 
 function randomCountryClick(event) {
 
-  ggg = Math.floor(Math.random() * 197) + 1;
+  ggg = Math.floor(Math.random() * 196) + 1;
+
+  console.log(ggg);
 
   foundCountryCode = countries[ggg].code;
 
@@ -109,47 +111,13 @@ function retrieveInfo(foundCountryCode) {
       currency.innerHTML = "Currency: " + info.currency.name + ' (' + info.currency.code + ')';
       population.innerHTML = "Population: " + info.population;
 
+
       // Set variables for changing object to string
       var languagesObject = info.languages;
-      var languagesString = "";
-
-      for (let i in languagesObject) {
-        languagesString += i + ":" + languagesObject[i] + ", ";
-      }
-      languagesString = languagesString.substring(0, languagesString.length - 2);
-
-      var splitString = languagesString.split(','); // Split the string by commas
-
-      var ggg = splitString.toString(); // Change array back to string
-
-      var splitString1 = ggg.split(/,|:/); // Split the string by commas and colons
-
-      var fullSentence; // Establish variable for the eventual full sentence of languages
-
-      if (splitString1.length == 2) { // Conditionals depending on how many languages there were in the array
-
-        fullSentence = splitString1[1]; // Assemble the full sentence
-
-      } else if (splitString1.length == 4) {
-
-        fullSentence = splitString1[1] + ', ' + splitString1[3];
-
-      } else if (splitString1.length == 6) {
-
-        fullSentence = splitString1[1] + ', ' + splitString1[3] + ', ' + splitString1[5];
-
-      } else if (splitString1.length == 8) {
-
-        fullSentence = splitString1[1] + ', ' + splitString1[3] + ', ' + splitString1[5] + ', ' + splitString1[7];
-
-      } else if (splitString1.length == 10) {
-
-        fullSentence = splitString1[1] + ', ' + splitString1[3] + ', ' + splitString1[5] + ', ' + splitString1[7] + ', ' + splitString1[9];
-
-      }
+      finalLanguagesString = getLanguagesString(languagesObject);
 
       // Continue setting elements to information found
-      languages.innerHTML = "Languages: " + fullSentence;
+      languages.innerHTML = "Languages: " + finalLanguagesString;
       timezone.innerHTML = "Timezone: " + info.timezone.code;
       flag.src = info.flag.file; // Set the flag image
       flag.style.height = 'auto'; // Set defualt size for flag no matter the country
@@ -161,6 +129,50 @@ function retrieveInfo(foundCountryCode) {
 
     });
 }
+
+// Function for retrieving languages for chosen country
+function getLanguagesString(languagesObject) {
+
+  var languagesStringOne = "";
+
+  for (let i in languagesObject) {
+    languagesStringOne += i + ":" + languagesObject[i] + ", ";
+  }
+  languagesStringTwo = languagesStringOne.substring(0, languagesStringOne.length - 2);
+
+  var languageArrayOne = languagesStringTwo.split(','); // Split the string by commas
+
+  var lanaguagesStringThree = languageArrayOne.toString(); // Change array back to string
+
+  var languagesArrayTwo = lanaguagesStringThree.split(/,|:/); // Split the string by commas and colons
+
+  var languagesStringLength = languagesArrayTwo.length;
+
+  if (languagesStringLength == 2) {
+
+    var finalLanguagesString = languagesArrayTwo[1]; // Establish variable for the eventual full sentence of languages
+
+  } else if (languagesStringLength > 2) {
+
+    var i = 3;
+
+    finalLanguagesString = languagesArrayTwo[1];
+
+    while (i < languagesStringLength) {
+
+      finalLanguagesString = finalLanguagesString + ", " + languagesArrayTwo[i]
+      i += 2;
+
+    }
+
+  }
+  return finalLanguagesString;
+}
+
+
+
+
+
 
 // Function for creating nodes
 function createNode(element) {
