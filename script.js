@@ -109,8 +109,11 @@ function retrieveInfo(foundCountryCode) {
       capital.innerHTML = "Capital: " + info.capital.name;
       continent.innerHTML = "Continent: " + info.continent.name;
       currency.innerHTML = "Currency: " + info.currency.name + ' (' + info.currency.code + ')';
-      population.innerHTML = "Population: " + info.population;
 
+      var populationInt = info.population;
+      var populationString = populationInt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+      population.innerHTML = "Population: " + populationString;
 
       // Set variables for changing object to string
       var languagesObject = info.languages;
@@ -136,31 +139,23 @@ function getLanguagesString(languagesObject) {
   var languagesStringOne = "";
 
   for (let i in languagesObject) {
+
     languagesStringOne += i + ":" + languagesObject[i] + ", ";
+
   }
+
   languagesStringTwo = languagesStringOne.substring(0, languagesStringOne.length - 2);
-
   var languageArrayOne = languagesStringTwo.split(','); // Split the string by commas
-
   var lanaguagesStringThree = languageArrayOne.toString(); // Change array back to string
-
   var languagesArrayTwo = lanaguagesStringThree.split(/,|:/); // Split the string by commas and colons
-
-  var languagesStringLength = languagesArrayTwo.length;
-
-  if (languagesStringLength == 2) {
-
-    var finalLanguagesString = languagesArrayTwo[1]; // Establish variable for the eventual full sentence of languages
-
-  } else if (languagesStringLength > 2) {
-
-    var i = 3;
-
-    finalLanguagesString = languagesArrayTwo[1];
-
-    while (i < languagesStringLength) {
-
-      finalLanguagesString = finalLanguagesString + ", " + languagesArrayTwo[i]
+  var languagesArrayLength = languagesArrayTwo.length;
+  if (languagesArrayLength == 2) { // If array length equals two, there is only one language for the country
+    var finalLanguagesString = languagesArrayTwo[1]; // Set finalLanguagesString to the only language
+  } else if (languagesArrayLength > 2) { //  If the length of the array is greater than two, there is more than one language for the country
+    var i = 3; // Set a variable to for loop
+    finalLanguagesString = languagesArrayTwo[1]; // Set finalLanguagesString to the first language
+    while (i < languagesArrayLength) { // While i is when length of languages array
+      finalLanguagesString = finalLanguagesString + ", " + languagesArrayTwo[i] // Append additional languages to the final languagaes string
       i += 2;
 
     }
