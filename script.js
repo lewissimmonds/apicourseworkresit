@@ -72,25 +72,33 @@ function randomCountryClick(event) {
 function retrieveInfo(foundCountryCode) {
 
   countryContainer.innerHTML = " ";
-
+  imageGContainer.innerHTML = " ";
 
   var url = "https://countries-cities.p.rapidapi.com/location/country/" + foundCountryCode; // Set a variable equal to the url plus whatever the country
   // code found was
   fetch(url, options) // Fetch the data from the url
     .then((response) => response.json()) // Send the response into a JSON
     .then(function(info) {
-      console.log(info.languages);
 
       // Create the elements for the information to be displayed on
       var name = createNode("h5");
+      name.style.paddingBottom = "20px";
       var code = createNode("h5");
+      code.style.paddingBottom = "20px";
       var capital = createNode("h5");
+      capital.style.paddingBottom = "20px";
       var continent = createNode("h5");
+      continent.style.paddingBottom = "20px";
       var currency = createNode("h5");
-      var population = createNode("h5");
+      currency.style.paddingBottom = "20px";
+      var population = createNode("h5")
+      population.style.paddingBottom = "20px";;
       var languages = createNode("h5");
+      languages.style.paddingBottom = "20px";
       var timezone = createNode("h5");
+      timezone.style.paddingBottom = "20px";
       var flag = createNode("img");
+
 
       // Append these elements to the container
       append(countryContainer, name);
@@ -101,7 +109,7 @@ function retrieveInfo(foundCountryCode) {
       append(countryContainer, population);
       append(countryContainer, languages);
       append(countryContainer, timezone);
-      append(countryContainer, flag);
+      append(imageGContainer, flag);
 
       // Set the elements equal to the information found
       name.innerHTML = "Name: " + info.name;
@@ -110,8 +118,8 @@ function retrieveInfo(foundCountryCode) {
       continent.innerHTML = "Continent: " + info.continent.name;
       currency.innerHTML = "Currency: " + info.currency.name + ' (' + info.currency.code + ')';
 
-      var populationInt = info.population;
-      var populationString = populationInt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      var populationInt = info.population; // Get population for country
+      var populationString = populationInt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); // Format it with commas
 
       population.innerHTML = "Population: " + populationString;
 
@@ -124,7 +132,8 @@ function retrieveInfo(foundCountryCode) {
       timezone.innerHTML = "Timezone: " + info.timezone.code;
       flag.src = info.flag.file; // Set the flag image
       flag.style.height = 'auto'; // Set defualt size for flag no matter the country
-      flag.style.width = '200px';
+      flag.style.width = '400px';
+      flag.style.border = '5px solid black';
 
     })
     .catch(function(error) {
@@ -179,6 +188,3 @@ function createNode(element) {
 function append(parent, el) {
   return parent.appendChild(el);
 }
-
-// Define container
-const countryContainer = document.getElementById("country");
