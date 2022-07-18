@@ -14,32 +14,30 @@ function searchClick(event) {
   let searchBoxInput = document.getElementById("searchbox").value; // Set a variable equal what's in the search box
   searchBoxInput = searchBoxInput.toLowerCase(); // Set string to lower case
 
-  if (searchBoxInput == "") {
+  if (searchBoxInput == "") { // If searchBox is empty
 
-    error.innerHTML = "Please enter a country";
+    error.innerHTML = "PLEASE ENTER A COUNTRY"; // Prompt user to enter a country
 
   } else {
 
-    error.innerHTML = " ";
+    error.innerHTML = ""; // If error never showed or if user corrected error then clear error message
 
-    console.log(searchBoxInput);
-
+    // Define variables for loop
     var success = false;
     var i = 0;
 
     try {
-      while (success == false) { // For loop to iterate through the country array
+      while (success == false) { // While loop to iterate through the country array (since I couldn't get a for loop to work)
         if (countries[i].name == searchBoxInput) { // If the name at the current index is equal to what was in the search box
           var foundCountryCode = countries[i].code // Set a variable to equal the country code at the key of country name
 
-          retrieveInfo(foundCountryCode)
-          error.innerHTML = " ";
-          break;
+          retrieveInfo(foundCountryCode) // Call function to retrieve the info the country
+          error.innerHTML = "";
+          break; // Break from the loop
 
-        } else {
+        } else { // If no country code is found from searchBoxInput
 
-          error.innerHTML = "Please enter a valid country"
-          success = false;
+          error.innerHTML = "PLEASE ENTER A VALID COUNTRY" // Prompt user with error
           i++;
 
         }

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <script src="countryarray.js" defer></script>
   <script src="script.js" defer></script>
+  <script src="autocompleter.js" defer></script>
   <link rel="stylesheet" href="./style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <title>GeoSearcher</title>
@@ -23,16 +24,21 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Search for a Country</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Search for a City</a>
+        <li>
+          <a class="nav-link active" href="#">About</a>
         </li>
-        <a class="nav-link active" href="#">About</a>
+
       </ul>
     </div>
   </nav>
 
-  <div class="container">
+  <div class="container" style="height:" 2000px"">
     <main>
+      <div class="row">
+        <div class="col mt-5 mb-4 text-center">
+          <button type="button" onClick="randomCountryClick()" class="btn btn-primary">Random Country</button>
+        </div>
+      </div>
       <div class="row">
         <div class="col mt-5 mb-4">
           <h1 class="text-center">ENTER A COUNTRY</h1>
@@ -41,55 +47,35 @@
       <div class="row">
         <div class="col text-center mb-4">
           <input class="searchbox" type="text" id="searchbox"></input>
+          <ul class="results" id="results"></ul>
+        </div>
+      </div>
+      <div class="row" style="padding-left: 24px">
+        <div class="row">
+          <div class="col text-center mb-3">
+            <div class="myDiv" id="error"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col mt-3 text-center">
+          <button type="button" onClick="searchClick()" class="btn btn-primary">Search</button>
         </div>
       </div>
       <div class="row">
-        <div class="row">
-          <div class="col text-center mb-3">
-            <div class="myDiv" id="error" style="color: red"></div>
+        <div class="col mt-3 mb-20">
+          <div class="container" id="countryContainer" style="width: 500px">
           </div>
         </div>
-        </div>
-        <div class="row mb-5">
-          <div class="col mt-3 text-center">
-            <button type="button" onClick="searchClick()" class="btn btn-primary">Search</button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col mt-3">
-              <div class="container" id="countryContainer" style="width: 500px">
-          </div>
-          </div>
-          <div class="col mt-3">
-              <div class="container" id="imageContainer">
-                <div class="flagContainer" id="imageGContainer">
+        <div class="col mt-3">
+          <div class="container" id="imageContainer">
+            <div class="flagContainer" id="imageGContainer">
             </div>
           </div>
-          </div>
         </div>
+      </div>
     </main>
   </div>
 
-
-    <main>
-      <div class="row">
-        <div class="col">
-
-        </div>
-
-      </div>
-      </main>
-      </div>
-
-      <!-- <button type="button" onClick="randomCountryClick()" me-auto>Random Country</button> -->
-      <div id="country"></div>
-      <div id="result"></div>
-</body>
-
-<footer>
-  <div class="position-absolute top-50 start-50 translate-middle">
-    <p><b>API Data taken from "Countries Cities" by GEO API</b></p>
-  </div>
-</footer>
 
 </html>
