@@ -1,3 +1,6 @@
+// Search box autocompleter found online and manipulated for my own use
+
+// Declare constants for the elements info will be taken from and placed into
 const autocomplete = document.getElementById("searchbox");
 const resultsHTML = document.getElementById("results");
 
