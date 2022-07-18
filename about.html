@@ -1,0 +1,58 @@
+<!Doctype Html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Linking the javascript files -->
+  <script src="countryarray.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="autocompleter.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="./style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <title>GeoSearcher</title>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #52A8FF;">
+    <div class="container-fluid">
+      <img src="website logo.png" width="70" height="70"></img>
+      <ul class="navbar-nav me-auto">
+        <h2 style="font-family: Bungee">GEOSEARCHER</h2>
+      </ul>
+      <ul class="navbar-nav mb-auto mb-2 mb-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" aria-current="page" href="index.html">Search for a Country</a>
+        </li>
+        <li>
+          <a class="nav-link active" href="about.html">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Container for showing about info -->
+  <div class="container" style="height: auto">
+    <main>
+      <div class="container my-5">
+        <h2 id="aboutTitle my-5">About this project</h2>
+      </div>
+      <div class="container my-5">
+        <p>This was a project themed around the idea of working with an API.</p>
+        <p>The API I chose to work with was <a href="https://rapidapi.com/natkapral/api/countries-cities/">Countries Cities by Geo API</a>,</p>
+        <p>Which allowed me to retrieve data about any country.</p>
+        <p>The purpose of this being, if you want to find data about</p>
+        <p>a country, you might have to look in multiple different places to find it,</p>
+        <p>and a site such as Wikipedia most likely has a lot of unecessary info.</p>
+        <p>So my tool is an efficient way to find country information,</p>
+        <p>complete with a random country button and an autosuggestor for the search box.</p>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>

@@ -2,40 +2,47 @@
 <html lang="en">
 
 <head>
+  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Linking the javascript files -->
   <script src="countryarray.js" defer></script>
   <script src="script.js" defer></script>
   <script src="autocompleter.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="./style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
   <title>GeoSearcher</title>
 </head>
 
 <body>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #52A8FF;">
     <div class="container-fluid">
+      <!-- Link the logo to the navbar -->
       <img src="website logo.png" width="70" height="70"></img>
       <ul class="navbar-nav me-auto">
-        <h2 style="font-family: Bungee">GEOSEARCHER</h2>
+        <h2>GEOSEARCHER</h2>
       </ul>
       <ul class="navbar-nav mb-auto mb-2 mb-lg-0">
+        <!-- Contents of navbar, including showing current page user is on -->
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Search for a Country</a>
+          <a class="nav-link active" aria-current="page" href="index.html">Search for a Country</a>
         </li>
-        <li>
-          <a class="nav-link active" href="#">About</a>
+        <li class"nav-item active">
+          <a class="nav-link" href="about.html">About</a>
         </li>
-
       </ul>
     </div>
   </nav>
 
-  <div class="container" style="height:" 2000px"">
+<!-- Container for the main part of the page -->
+  <div class="container" style="height: 1300px">
     <main>
       <div class="row">
         <div class="col mt-5 mb-4 text-center">
+          <!-- Button to randomly generate country -->
           <button type="button" onClick="randomCountryClick()" class="btn btn-primary">Random Country</button>
         </div>
       </div>
@@ -46,28 +53,34 @@
       </div>
       <div class="row">
         <div class="col text-center mb-4">
+          <!-- Searchbox for user to input a country -->
           <input class="searchbox" type="text" id="searchbox"></input>
+          <!-- The list where the text automplete results will show -->
           <ul class="results" id="results"></ul>
         </div>
       </div>
       <div class="row" style="padding-left: 24px">
         <div class="row">
           <div class="col text-center mb-3">
+            <!-- Error message -->
             <div class="myDiv" id="error"></div>
           </div>
         </div>
       </div>
       <div class="row mb-5">
         <div class="col mt-3 text-center">
+          <!-- Button to search using what's in the search box -->
           <button type="button" onClick="searchClick()" class="btn btn-primary">Search</button>
         </div>
       </div>
       <div class="row">
         <div class="col mt-3 mb-20">
+          <!-- Container to hold country info -->
           <div class="container" id="countryContainer" style="width: 500px">
           </div>
         </div>
         <div class="col mt-3">
+          <!-- Container to hold flag image -->
           <div class="container" id="imageContainer">
             <div class="flagContainer" id="imageGContainer">
             </div>
@@ -76,6 +89,5 @@
       </div>
     </main>
   </div>
-
 
 </html>

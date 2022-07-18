@@ -6,17 +6,16 @@ const options = {
     'X-RapidAPI-Host': 'countries-cities.p.rapidapi.com'
   }
 };
+
 // Function that is activated upon clicking search
 function searchClick(event) {
-
-
 
   let searchBoxInput = document.getElementById("searchbox").value; // Set a variable equal what's in the search box
   searchBoxInput = searchBoxInput.toLowerCase(); // Set string to lower case
 
   if (searchBoxInput == "") { // If searchBox is empty
 
-    error.innerHTML = "PLEASE ENTER A COUNTRY"; // Prompt user to enter a country
+    error.innerHTML = "Please enter a country"; // Prompt user to enter a country
 
   } else {
 
@@ -50,25 +49,24 @@ function searchClick(event) {
 
 }
 
-
+// Function for when random country button is clicked
 function randomCountryClick(event) {
 
-  ggg = Math.floor(Math.random() * 196) + 1;
+  randomNumber = Math.floor(Math.random() * 196) + 1; // Generate a random number in a range
 
-  console.log(ggg);
+  foundCountryCode = countries[randomNumber].code; // Look through the countries array to find the corresponding index
 
-  foundCountryCode = countries[ggg].code;
-
-  retrieveInfo(foundCountryCode)
+  retrieveInfo(foundCountryCode) // Retrieve the info using the country code found from random number
 
   error.innerHTML = " ";
 
 }
 
 
-
+// Funcition to use the found country code to retrieve info about the corresponding country
 function retrieveInfo(foundCountryCode) {
 
+  // Set containers for the information to be empty
   countryContainer.innerHTML = " ";
   imageGContainer.innerHTML = " ";
 
@@ -170,11 +168,6 @@ function getLanguagesString(languagesObject) {
   }
   return finalLanguagesString;
 }
-
-
-
-
-
 
 // Function for creating nodes
 function createNode(element) {
